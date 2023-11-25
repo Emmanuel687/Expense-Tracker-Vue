@@ -1,12 +1,27 @@
-<script setup>
-import TheWelcome from "./components/TheWelcome.vue";
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <HelloWorld />
-  <TheWelcome />
-  
+  <Header />
+  <div class="container">
+    <Balance />
+    <IncomeExpenses />
+    <TransactionList />
+    <AddTransaction />
+  </div>
 </template>
+<script>
+import Header from "./components/Header.vue";
+import Balance from "./components/Balance.vue";
+import IncomeExpenses from "./components/IncomeExpenses.vue";
+import TransactionList from "./components/TransactionList.vue"
+import AddTransaction from "./components/AddTransaction.vue";
 
-<style scoped></style>
+export default {
+  components: {
+    Header,
+    Balance,
+    IncomeExpenses,
+    TransactionList,
+    AddTransaction,
+},
+};
+</script>
+<style></style>

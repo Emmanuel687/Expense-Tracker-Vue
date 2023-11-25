@@ -1,7 +1,7 @@
 <template>
-  <h1>helloScript</h1>
+    <h1>My Expense App</h1>
 </template>
 
 <script>
-
+  
 </script>
