@@ -12,19 +12,10 @@
   </ul>
 </template>
 
-<script>
-import { ref } from 'vue';
-export default {
-  setup() {
-    const transactions =ref( [
-      { id: 1, text: "Flower", amount: -19.99 },
-      { id: 2, text: "Salary", amount: 299.99 },
-      { id: 3, text: "Book", amount: -10 },
-      { id: 4, text: "Flower", amount: -19.99 },
-      { id: 5, text: "Flower", amount: 119.99 },
-    ]);
-    return {transactions,}
-
-  }
-};
+<script setup>
+import { defineProps } from "vue";
+const props = defineProps({transactions:{
+    type:Array,
+    isRequired:true
+}})
 </script>
