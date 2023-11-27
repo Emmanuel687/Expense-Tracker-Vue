@@ -1,10 +1,10 @@
 <template>
   <Header />
   <div class="container">
-    <Balance :total="total" />
-    <IncomeExpenses :income="income" :expense="expense" />
+    <Balance :total="+total" />
+    <IncomeExpenses :income="+income" :expense="+expense" />
     <TransactionList :transactions="transactions" />
-    <AddTransaction />
+    <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
   </div>
 </template>
 <script setup>
@@ -13,7 +13,9 @@ import Balance from "./components/Balance.vue";
 import IncomeExpenses from "./components/IncomeExpenses.vue";
 import TransactionList from "./components/TransactionList.vue";
 import AddTransaction from "./components/AddTransaction.vue";
+import { v4 as uuidv4 } from "uuid";
 import { ref, computed } from "vue";
+import { generate } from "@vue/compiler-core";
 const transactions = ref([
   { id: 1, text: "Flower", amount: -19.99 },
   { id: 2, text: "Salary", amount: 299.99 },
@@ -42,6 +44,14 @@ const expense = computed(() =>
     .reduce((acc, transaction) => acc + Math.abs(transaction.amount), 0)
 );
 
+// Add transaction
+const handleTransactionSubmitted = (transactionData) => {
+  transactions.value.push({
+    id: uuidv4(),
+    text: transactionData.text,
+    amount: transactionData.amount,
+  });
+};
 </script>
 
 <style></style>
