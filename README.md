@@ -23,8 +23,7 @@ vue-toastification for toast notifications
 uuid for generating unique transaction IDs
 
 # Images
-
-![Alt text](https://file%252B.vscode-resource.vscode-cdn.net/Users/emmanuel/Desktop/Screen%2520Shot%25201402-09-27%2520at%252014.22.37.png?version%253D1702898683560)
+<img width="1676" alt="Screen Shot 1402-09-27 at 14 22 37" src="https://github.com/Emmanuel687/Vue3--Practise-CRUD/assets/93251478/67be896e-65f3-4650-a9a6-b3edcf3d3802">
 
 # Usage
 Access the application in your web browser.
