@@ -1,43 +1,44 @@
 <template>
   <h3>Add new transaction</h3>
-  <form @submit.prevent="onSubmit" id="form">
+  <form id="form" @submit.prevent="onSubmit">
     <div class="form-control">
       <label for="text">Text</label>
-      <input
-        name="text"
-        type="text"
-        required
-        id="text"
-        placeholder="Enter text..."
-      />
+      <input type="text" id="text" v-model="text" placeholder="Enter text..." />
     </div>
     <div class="form-control">
       <label for="amount"
         >Amount <br />
         (negative - expense, positive - income)</label
       >
-      <input
-        name="amount"
-        type="number"
-        step="0.01"
-        required
-        id="amount"
-        placeholder="Enter amount..."
-      />
+      <input type="text" id="amount" placeholder="Enter amount..." v-model="amount" />
     </div>
     <button class="btn">Add transaction</button>
   </form>
 </template>
 
 <script setup>
-const emit = defineEmits(["transactionSubmitted"]);
+import { ref } from 'vue';
+import {useToast} from "vue-toastification";
+const emit = defineEmits(["transactionSubmitted"])
 
-const onSubmit = (e) => {
-  const form = new FormData(e.target);
+const text = ref("");
+const amount = ref("")
+const toast = useToast()
 
-  const text = form.get("text");
-  const amount = form.get("amount");
+const onSubmit = ()=>{
+  
+    if(!text.value || !amount.value ){
+        toast.error("Both Fields must be filled");
+        return;
+    }
 
-  emit("transactionSubmitted", { text, amount });
-};
+    const transactionData = {
+      text:text.value,
+      amount:parseFloat(amount.value)
+    }
+
+    emit("transactionSubmitted", transactionData)
+     text.value = "";
+     amount.value = ""
+}
 </script>
