@@ -15,7 +15,7 @@ import TransactionList from "./components/TransactionList.vue";
 import AddTransaction from "./components/AddTransaction.vue";
 import { v4 as uuidv4 } from "uuid";
 import { ref, computed } from "vue";
-import { generate } from "@vue/compiler-core";
+
 const transactions = ref([
   { id: 1, text: "Flower", amount: -19.99 },
   { id: 2, text: "Salary", amount: 299.99 },
